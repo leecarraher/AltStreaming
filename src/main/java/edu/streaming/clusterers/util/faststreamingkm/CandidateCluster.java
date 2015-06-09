@@ -21,20 +21,11 @@
 
 package edu.streaming.clusterers.util.faststreamingkm;
 
-import edu.streaming.ucla.sspace.util.primitive.IntSet;
-import edu.streaming.ucla.sspace.util.primitive.TroveIntSet;
-import edu.streaming.ucla.sspace.vector.DenseVector;
-import edu.streaming.ucla.sspace.vector.DoubleVector;
-import edu.streaming.ucla.sspace.vector.SparseHashDoubleVector;
-import edu.streaming.ucla.sspace.vector.SparseVector;
-import edu.streaming.ucla.sspace.vector.VectorMath;
-import edu.streaming.ucla.sspace.vector.Vectors;
-
 /**
  * A shared utility class for representing a cluster to which data points have
  * been assigned.
  */
-class CandidateCluster {    
+public class CandidateCluster {    
         
     /**
      * The set of data identifiers that have currently been assigned to the
@@ -53,7 +44,7 @@ class CandidateCluster {
     private DoubleVector centroid;
 
     public CandidateCluster() {
-        indices = new TroveIntSet();
+        indices = (IntSet) new TroveIntSet();
         centroid = null;
     }
 

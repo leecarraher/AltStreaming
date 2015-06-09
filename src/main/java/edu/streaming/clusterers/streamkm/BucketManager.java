@@ -50,7 +50,7 @@ public class BucketManager  {
 	/**
 	inserts a single point into the bucketmanager
 	**/
-	void insertPoint(Point p){
+	public void insertPoint(Point p){
 		
 		//check if there is enough space in the first bucket
 		int cursize = this.buckets[0].cursize;	
@@ -125,7 +125,7 @@ public class BucketManager  {
 
 	this operation should only be called after the streaming process is finished
 	**/
-	Point[] getCoresetFromManager(int d){
+	public Point[] getCoresetFromManager(int d){
 		Point[] coreset = new Point[d];
 		int i = 0;
 		if(this.buckets[this.numberOfBuckets-1].cursize == this.maxBucketsize){

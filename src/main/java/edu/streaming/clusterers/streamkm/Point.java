@@ -2,7 +2,7 @@ package edu.streaming.clusterers.streamkm;
 
 import edu.streaming.cluster.Cluster;
 import edu.streaming.cluster.SphereCluster;
-import weka.core.Instance;
+
 
 /**
  *
@@ -12,16 +12,16 @@ Christian Sohler, Kamil Swierkot
 public class Point {
 
 	//dimension
-	int dimension;
+	public int dimension;
 
 	//Clustering Features (weight, squareSum, linearSum)
-	double weight;
+	public double weight;
 	double squareSum;
-	double[] coordinates;
+	public double[] coordinates;
 
 	//cost and index of the centre, the point is currently assigned to
-	double curCost;
-	int centreIndex;
+	public double curCost;
+	public int centreIndex;
 	
 	//id and class (if there is class information in the file)
 	int id;
@@ -41,18 +41,18 @@ public class Point {
 		}
 	}
 	
-	public Point(Instance inst, int id){
-		this.weight = inst.weight();
+	public Point(double[] X, int id){
+		this.weight = 1;//inst.weight(); unit weight
 		this.squareSum = 0.0;
-		this.dimension = inst.numAttributes();
+		this.dimension = X.length;
 		this.coordinates = new double[this.dimension];
 		this.id = id;
 		this.cl = 0;// NOT USED (int) inst.classValue();
 		this.curCost = 0;
 		this.centreIndex = -1;
 		for(int l=0;l<this.dimension;l++){
-			double nextNumber = inst.value(l) * inst.value(l);
-			this.coordinates[l] = inst.value(l);
+			double nextNumber = X[l] * X[l];
+			this.coordinates[l] = X[l];//inst.value(l);
 			this.squareSum += nextNumber* nextNumber;
 		}
 	}
